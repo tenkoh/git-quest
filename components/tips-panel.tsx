@@ -1,7 +1,7 @@
 "use client";
 
+import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { CheckCircle2, AlertCircle } from "lucide-react";
 
 type TipsPanelProps = {
   showTip: boolean;

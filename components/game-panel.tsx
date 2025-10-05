@@ -1,9 +1,9 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { CommandInput } from "@/components/command-input";
 import { TipsPanel } from "@/components/tips-panel";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 type GamePanelProps = {
   instructionTitle: string;

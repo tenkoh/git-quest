@@ -1,10 +1,10 @@
 "use client";
 
-import { useGame } from "@/lib/game-context";
-import { GameHeader } from "@/components/game-header";
-import { GitImageDisplay } from "@/components/git-image-display";
-import { GamePanel } from "@/components/game-panel";
 import { CompletionScreen } from "@/components/completion-screen";
+import { GameHeader } from "@/components/game-header";
+import { GamePanel } from "@/components/game-panel";
+import { GitImageDisplay } from "@/components/git-image-display";
+import { useGame } from "@/lib/game-context";
 
 export default function Home() {
   const {

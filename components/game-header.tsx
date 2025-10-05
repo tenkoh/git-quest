@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { RotateCcw } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type GameHeaderProps = {
   onReset: () => void;

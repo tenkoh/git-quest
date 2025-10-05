@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Trophy } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type CompletionScreenProps = {
   onReset: () => void;

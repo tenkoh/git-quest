@@ -6,7 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "format": "biome format --write",
+    "format": "biome check --fix",
     "start": "next start"
   },
   "dependencies": {
