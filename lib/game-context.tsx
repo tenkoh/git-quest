@@ -10,10 +10,6 @@ export type ScenarioStep = {
   tip?: string
   hint?: string
   imagePath?: string
-  graphState: {
-    local: string[]
-    remote: string[]
-  }
 }
 
 type GameState = {
@@ -37,10 +33,6 @@ const scenarios: ScenarioStep[] = [
     tip: "リモートリポジトリを丸ごとコピーし、作業の出発点を作ります",
     hint: "git clone <リポジトリURL> を使用します",
     imagePath: "/images/step-1.svg",
-    graphState: {
-      local: [],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 2,
@@ -50,10 +42,6 @@ const scenarios: ScenarioStep[] = [
     tip: "mainを安定させ、機能ごとに作業を分離できます",
     hint: "git checkout -b <ブランチ名> または git switch -c <ブランチ名> を使用します",
     imagePath: "/images/step-2.svg",
-    graphState: {
-      local: ["Local:", "* def456 (HEAD -> main) initial commit"],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 3,
@@ -63,10 +51,6 @@ const scenarios: ScenarioStep[] = [
     tip: "addはステージ、commitは履歴確定。役割を分けて考えましょう",
     hint: 'git add <ファイル名> && git commit -m "<メッセージ>" を使用します',
     imagePath: "/images/step-3.svg",
-    graphState: {
-      local: ["Local:", "* def456 (HEAD -> feature, main) initial commit"],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 4,
@@ -76,10 +60,6 @@ const scenarios: ScenarioStep[] = [
     tip: "機能をさらに細かく分けることで、変更を管理しやすくなります",
     hint: "git checkout -b <ブランチ名> または git switch -c <ブランチ名> を使用します",
     imagePath: "/images/step-4.svg",
-    graphState: {
-      local: ["Local:", "* def456 (HEAD -> feature) initial commit"],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 5,
@@ -89,10 +69,6 @@ const scenarios: ScenarioStep[] = [
     tip: "小さな単位でコミットすることで、変更履歴が追いやすくなります",
     hint: 'git add <ファイル名> && git commit -m "<メッセージ>" を使用します',
     imagePath: "/images/step-5.svg",
-    graphState: {
-      local: ["Local:", "* def456 (HEAD -> feature/refactor, feature) initial commit"],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 6,
@@ -102,10 +78,6 @@ const scenarios: ScenarioStep[] = [
     tip: "ブランチを切り替えることで、異なる作業を並行して進められます",
     hint: "git checkout <ブランチ名> または git switch <ブランチ名> を使用します",
     imagePath: "/images/step-6.svg",
-    graphState: {
-      local: ["Local:", "* ghi789 (feature/refactor) refactor fileA", "* def456 (HEAD -> feature) initial commit"],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 7,
@@ -115,10 +87,6 @@ const scenarios: ScenarioStep[] = [
     tip: "別系統の変更を統合し、履歴を一つにまとめます",
     hint: "git merge <ブランチ名> を使用します",
     imagePath: "/images/step-7.svg",
-    graphState: {
-      local: ["Local:", "* ghi789 (feature/refactor) refactor fileA", "* def456 (HEAD -> feature) initial commit"],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 8,
@@ -128,17 +96,6 @@ const scenarios: ScenarioStep[] = [
     tip: "-uオプションで追跡設定。次回以降は git push のみでOK",
     hint: "git push -u origin <ブランチ名> を使用します",
     imagePath: "/images/step-8.svg",
-    graphState: {
-      local: [
-        "Local:",
-        "* jkl012 (HEAD -> feature) Merge branch 'feature/refactor' into feature",
-        "|\\",
-        "| * ghi789 (feature/refactor) refactor fileA",
-        "* | def456 initial commit",
-        "|/",
-      ],
-      remote: ["Remote (https://example.com/lecture.git):", "* def456 (origin/main) initial commit"],
-    },
   },
   {
     id: 9,
@@ -148,25 +105,6 @@ const scenarios: ScenarioStep[] = [
     tip: "リモートでは通常、Pull Requestを経て変更を取り込みます",
     hint: "「ok」と入力してください",
     imagePath: "/images/step-9.svg",
-    graphState: {
-      local: [
-        "Local:",
-        "* jkl012 (HEAD -> feature) Merge branch 'feature/refactor' into feature",
-        "|\\",
-        "| * ghi789 (feature/refactor) refactor fileA",
-        "* | def456 initial commit",
-        "|/",
-      ],
-      remote: [
-        "Remote (https://example.com/lecture.git):",
-        "* jkl012 (origin/feature) Merge branch 'feature/refactor' into feature",
-        "|\\",
-        "| * ghi789 refactor fileA",
-        "* | def456 initial commit",
-        "| |/",
-        "|/",
-      ],
-    },
   },
   {
     id: 10,
@@ -176,27 +114,6 @@ const scenarios: ScenarioStep[] = [
     tip: "mainブランチで最新の変更を取り込む準備をします",
     hint: "git checkout main または git switch main を使用します",
     imagePath: "/images/step-10.svg",
-    graphState: {
-      local: [
-        "Local:",
-        "* jkl012 (feature) Merge branch 'feature/refactor' into feature",
-        "|\\",
-        "| * ghi789 (feature/refactor) refactor fileA",
-        "* | def456 initial commit",
-        "|/",
-        "* def456 (HEAD -> main) initial commit",
-      ],
-      remote: [
-        "Remote (https://example.com/lecture.git):",
-        "* jkl012 (origin/feature) Merge branch 'feature/refactor' into feature",
-        "|\\",
-        "| * ghi789 refactor fileA",
-        "* | def456 initial commit",
-        "| |/",
-        "|/",
-        "* def456 (origin/main) initial commit",
-      ],
-    },
   },
   {
     id: 11,
@@ -206,29 +123,6 @@ const scenarios: ScenarioStep[] = [
     tip: "fetch + merge をまとめたコマンドです",
     hint: "git pull を使用します",
     imagePath: "/images/step-11.svg",
-    graphState: {
-      local: [
-        "Local:",
-        "* jkl012 (feature) Merge branch 'feature/refactor' into feature",
-        "|\\",
-        "| * ghi789 (feature/refactor) refactor fileA",
-        "* | def456 initial commit",
-        "|/",
-        "* def456 (HEAD -> main) initial commit",
-      ],
-      remote: [
-        "Remote (https://example.com/lecture.git):",
-        "* mno345 (origin/main) Merge pull request #1 from feature",
-        "|\\",
-        "| * jkl012 (origin/feature) Merge branch 'feature/refactor' into feature",
-        "| |\\",
-        "| | * ghi789 refactor fileA",
-        "| * | def456 initial commit",
-        "| |/",
-        "|/",
-        "* def456 (origin/main) initial commit",
-      ],
-    },
   },
 ]
 
