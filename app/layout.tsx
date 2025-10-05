@@ -15,9 +15,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Git学習ゲーム",
-  description: "Gitの基本的なチーム開発フローを学ぶゲーム",
-    generator: 'v0.app'
+  title: "GitQuest",
+  description: "Gitの基本的なチーム開発フローを学ぶゲーム"
 }
 
 export default function RootLayout({
