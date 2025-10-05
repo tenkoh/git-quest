@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
 
-import { Card } from "@/components/ui/card"
+import { Card } from "@/components/ui/card";
 
 type GitImageDisplayProps = {
-  imagePath?: string
-}
+  imagePath?: string;
+};
 
 export function GitImageDisplay({ imagePath }: GitImageDisplayProps) {
   return (
@@ -26,5 +26,5 @@ export function GitImageDisplay({ imagePath }: GitImageDisplayProps) {
         <div className="text-muted-foreground text-sm">画像読み込み中...</div>
       )}
     </Card>
-  )
+  );
 }

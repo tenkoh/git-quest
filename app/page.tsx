@@ -1,17 +1,25 @@
-"use client"
+"use client";
 
-import { useGame } from "@/lib/game-context"
-import { GameHeader } from "@/components/game-header"
-import { GitImageDisplay } from "@/components/git-image-display"
-import { GamePanel } from "@/components/game-panel"
-import { CompletionScreen } from "@/components/completion-screen"
+import { useGame } from "@/lib/game-context";
+import { GameHeader } from "@/components/game-header";
+import { GitImageDisplay } from "@/components/git-image-display";
+import { GamePanel } from "@/components/game-panel";
+import { CompletionScreen } from "@/components/completion-screen";
 
 export default function Home() {
-  const { currentStep, showTip, showHint, isCorrectAndWaiting, steps, submitCommand, advanceToNextStep, reset } =
-    useGame()
+  const {
+    currentStep,
+    showTip,
+    showHint,
+    isCorrectAndWaiting,
+    steps,
+    submitCommand,
+    advanceToNextStep,
+    reset,
+  } = useGame();
 
-  const currentStepData = steps[currentStep]
-  const isCompleted = currentStep >= steps.length
+  const currentStepData = steps[currentStep];
+  const isCompleted = currentStep >= steps.length;
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -44,5 +52,5 @@ export default function Home() {
         )}
       </main>
     </div>
-  )
+  );
 }

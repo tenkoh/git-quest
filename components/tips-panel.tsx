@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { CheckCircle2, AlertCircle } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 type TipsPanelProps = {
-  showTip: boolean
-  showHint: boolean
-  tip?: string
-  hint?: string
-}
+  showTip: boolean;
+  showHint: boolean;
+  tip?: string;
+  hint?: string;
+};
 
 export function TipsPanel({ showTip, showHint, tip, hint }: TipsPanelProps) {
   if (!showTip && !showHint) {
-    return null
+    return null;
   }
 
   return (
@@ -35,5 +35,5 @@ export function TipsPanel({ showTip, showHint, tip, hint }: TipsPanelProps) {
         </Alert>
       )}
     </div>
-  )
+  );
 }

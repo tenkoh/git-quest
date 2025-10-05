@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { CommandInput } from "@/components/command-input"
-import { TipsPanel } from "@/components/tips-panel"
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { CommandInput } from "@/components/command-input";
+import { TipsPanel } from "@/components/tips-panel";
 
 type GamePanelProps = {
-  instructionTitle: string
-  instructionBody: string
-  stepNumber: number
-  totalSteps: number
-  showTip: boolean
-  showHint: boolean
-  isCorrectAndWaiting: boolean
-  tip?: string
-  hint?: string
-  onSubmit: (command: string) => void
-  onNext: () => void
-}
+  instructionTitle: string;
+  instructionBody: string;
+  stepNumber: number;
+  totalSteps: number;
+  showTip: boolean;
+  showHint: boolean;
+  isCorrectAndWaiting: boolean;
+  tip?: string;
+  hint?: string;
+  onSubmit: (command: string) => void;
+  onNext: () => void;
+};
 
 export function GamePanel({
   instructionTitle,
@@ -39,11 +39,20 @@ export function GamePanel({
           ステップ {stepNumber} / {totalSteps}
         </div>
         <h2 className="text-lg font-semibold">{instructionTitle}</h2>
-        {instructionBody && <p className="mt-2 text-sm text-muted-foreground">{instructionBody}</p>}
+        {instructionBody && (
+          <p className="mt-2 text-sm text-muted-foreground">
+            {instructionBody}
+          </p>
+        )}
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        <TipsPanel showTip={showTip} showHint={showHint} tip={tip} hint={hint} />
+        <TipsPanel
+          showTip={showTip}
+          showHint={showHint}
+          tip={tip}
+          hint={hint}
+        />
       </div>
 
       <div className="flex-shrink-0 space-y-3">
@@ -55,5 +64,5 @@ export function GamePanel({
         <CommandInput onSubmit={onSubmit} disabled={isCorrectAndWaiting} />
       </div>
     </Card>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Trophy } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Trophy } from "lucide-react";
 
 type CompletionScreenProps = {
-  onReset: () => void
-}
+  onReset: () => void;
+};
 
 export function CompletionScreen({ onReset }: CompletionScreenProps) {
   return (
@@ -21,5 +21,5 @@ export function CompletionScreen({ onReset }: CompletionScreenProps) {
         もう一度挑戦する
       </Button>
     </div>
-  )
+  );
 }

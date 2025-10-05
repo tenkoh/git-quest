@@ -1,12 +1,16 @@
-"use client"
+"use client";
 
 type InstructionPanelProps = {
-  instruction: string
-  stepNumber: number
-  totalSteps: number
-}
+  instruction: string;
+  stepNumber: number;
+  totalSteps: number;
+};
 
-export function InstructionPanel({ instruction, stepNumber, totalSteps }: InstructionPanelProps) {
+export function InstructionPanel({
+  instruction,
+  stepNumber,
+  totalSteps,
+}: InstructionPanelProps) {
   return (
     <div className="rounded-lg border bg-card p-6">
       <div className="flex items-center justify-between mb-3">
@@ -17,5 +21,5 @@ export function InstructionPanel({ instruction, stepNumber, totalSteps }: Instru
       </div>
       <p className="text-foreground">{instruction}</p>
     </div>
-  )
+  );
 }

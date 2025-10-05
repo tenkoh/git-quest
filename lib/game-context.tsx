@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, type ReactNode } from "react";
 
 export type ScenarioStep = {
-  id: number
-  instructionTitle: string
-  instructionBody: string
-  acceptedCommands: string[]
-  tip?: string
-  hint?: string
-  imagePath?: string
-}
+  id: number;
+  instructionTitle: string;
+  instructionBody: string;
+  acceptedCommands: string[];
+  tip?: string;
+  hint?: string;
+  imagePath?: string;
+};
 
 type GameState = {
-  currentStep: number
-  showTip: boolean
-  showHint: boolean
-  lastCommand: string
-  isCorrectAndWaiting: boolean
-  steps: ScenarioStep[]
-  submitCommand: (command: string) => void
-  advanceToNextStep: () => void
-  reset: () => void
-}
+  currentStep: number;
+  showTip: boolean;
+  showHint: boolean;
+  lastCommand: string;
+  isCorrectAndWaiting: boolean;
+  steps: ScenarioStep[];
+  submitCommand: (command: string) => void;
+  advanceToNextStep: () => void;
+  reset: () => void;
+};
 
 const scenarios: ScenarioStep[] = [
   {
@@ -56,7 +56,10 @@ const scenarios: ScenarioStep[] = [
     id: 4,
     instructionTitle: "新しいブランチ feature/refactor を作成してください",
     instructionBody: "",
-    acceptedCommands: ["git checkout -b feature/refactor", "git switch -c feature/refactor"],
+    acceptedCommands: [
+      "git checkout -b feature/refactor",
+      "git switch -c feature/refactor",
+    ],
     tip: "機能をさらに細かく分けることで、変更を管理しやすくなります",
     hint: "git checkout -b <ブランチ名> または git switch -c <ブランチ名> を使用します",
     imagePath: "/images/step-4.svg",
@@ -99,7 +102,8 @@ const scenarios: ScenarioStep[] = [
   },
   {
     id: 9,
-    instructionTitle: "リモートでPull Requestを作成し、マージされたことを確認したら「ok」と入力してください",
+    instructionTitle:
+      "リモートでPull Requestを作成し、マージされたことを確認したら「ok」と入力してください",
     instructionBody: "",
     acceptedCommands: ["ok"],
     tip: "リモートでは通常、Pull Requestを経て変更を取り込みます",
@@ -124,52 +128,54 @@ const scenarios: ScenarioStep[] = [
     hint: "git pull を使用します",
     imagePath: "/images/step-11.svg",
   },
-]
+];
 
-const GameContext = createContext<GameState | undefined>(undefined)
+const GameContext = createContext<GameState | undefined>(undefined);
 
 export function GameProvider({ children }: { children: ReactNode }) {
-  const [currentStep, setCurrentStep] = useState(0)
-  const [showTip, setShowTip] = useState(false)
-  const [showHint, setShowHint] = useState(false)
-  const [lastCommand, setLastCommand] = useState("")
-  const [isCorrectAndWaiting, setIsCorrectAndWaiting] = useState(false)
+  const [currentStep, setCurrentStep] = useState(0);
+  const [showTip, setShowTip] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const [lastCommand, setLastCommand] = useState("");
+  const [isCorrectAndWaiting, setIsCorrectAndWaiting] = useState(false);
 
   const submitCommand = (command: string) => {
-    const step = scenarios[currentStep]
+    const step = scenarios[currentStep];
 
-    if (!step) return
+    if (!step) return;
 
-    const isCorrect = step.acceptedCommands.some((accepted) => command.trim().toLowerCase() === accepted.toLowerCase())
+    const isCorrect = step.acceptedCommands.some(
+      (accepted) => command.trim().toLowerCase() === accepted.toLowerCase(),
+    );
 
     if (isCorrect) {
-      setShowTip(true)
-      setShowHint(false)
-      setLastCommand(command)
-      setIsCorrectAndWaiting(true)
+      setShowTip(true);
+      setShowHint(false);
+      setLastCommand(command);
+      setIsCorrectAndWaiting(true);
     } else {
-      setShowTip(false)
-      setShowHint(true)
-      setLastCommand(command)
-      setIsCorrectAndWaiting(false)
+      setShowTip(false);
+      setShowHint(true);
+      setLastCommand(command);
+      setIsCorrectAndWaiting(false);
     }
-  }
+  };
 
   const advanceToNextStep = () => {
-    setCurrentStep(currentStep + 1)
-    setShowTip(false)
-    setShowHint(false)
-    setIsCorrectAndWaiting(false)
-    setLastCommand("")
-  }
+    setCurrentStep(currentStep + 1);
+    setShowTip(false);
+    setShowHint(false);
+    setIsCorrectAndWaiting(false);
+    setLastCommand("");
+  };
 
   const reset = () => {
-    setCurrentStep(0)
-    setShowTip(false)
-    setShowHint(false)
-    setLastCommand("")
-    setIsCorrectAndWaiting(false)
-  }
+    setCurrentStep(0);
+    setShowTip(false);
+    setShowHint(false);
+    setLastCommand("");
+    setIsCorrectAndWaiting(false);
+  };
 
   return (
     <GameContext.Provider
@@ -187,13 +193,13 @@ export function GameProvider({ children }: { children: ReactNode }) {
     >
       {children}
     </GameContext.Provider>
-  )
+  );
 }
 
 export function useGame() {
-  const context = useContext(GameContext)
+  const context = useContext(GameContext);
   if (context === undefined) {
-    throw new Error("useGame must be used within a GameProvider")
+    throw new Error("useGame must be used within a GameProvider");
   }
-  return context
+  return context;
 }

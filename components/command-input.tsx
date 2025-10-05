@@ -1,26 +1,29 @@
-"use client"
+"use client";
 
-import { useState, type FormEvent } from "react"
-import { Input } from "@/components/ui/input"
+import { useState, type FormEvent } from "react";
+import { Input } from "@/components/ui/input";
 
 type CommandInputProps = {
-  onSubmit: (command: string) => void
-  disabled?: boolean
-}
+  onSubmit: (command: string) => void;
+  disabled?: boolean;
+};
 
 export function CommandInput({ onSubmit, disabled }: CommandInputProps) {
-  const [command, setCommand] = useState("")
+  const [command, setCommand] = useState("");
 
   const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (command.trim()) {
-      onSubmit(command)
-      setCommand("")
+      onSubmit(command);
+      setCommand("");
     }
-  }
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg border border-gray-700 bg-black p-6">
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-lg border border-gray-700 bg-black p-6"
+    >
       <div className="flex items-center gap-3">
         <span className="font-mono text-white font-semibold">$</span>
         <Input
@@ -34,5 +37,5 @@ export function CommandInput({ onSubmit, disabled }: CommandInputProps) {
         />
       </div>
     </form>
-  )
+  );
 }

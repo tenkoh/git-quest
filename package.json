@@ -6,6 +6,7 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
+    "format": "biome format --write",
     "start": "next start"
   },
   "dependencies": {
@@ -62,6 +63,7 @@
     "zod": "3.25.67"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.5",
     "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
     "@types/react": "^19",

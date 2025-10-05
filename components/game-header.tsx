@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { RotateCcw } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { RotateCcw } from "lucide-react";
 
 type GameHeaderProps = {
-  onReset: () => void
-}
+  onReset: () => void;
+};
 
 export function GameHeader({ onReset }: GameHeaderProps) {
   return (
@@ -18,5 +18,5 @@ export function GameHeader({ onReset }: GameHeaderProps) {
         </Button>
       </div>
     </header>
-  )
+  );
 }
