@@ -5,7 +5,8 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
+    "lint:next": "next lint",
+    "check:biome": "biome check",
     "format": "biome check --fix",
     "start": "next start"
   },
