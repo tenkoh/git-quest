@@ -12,9 +12,9 @@ type GitImageDisplayProps = {
 };
 
 export function GitImageDisplay({ imagePath }: GitImageDisplayProps) {
-  const deployedPath = `${BASE_PATH}${imagePath || "/images/placeholder.svg"}`
+  const deployedPath = `${BASE_PATH}${imagePath || "/images/placeholder.svg"}`;
   return (
-    <Card className="w-full h-full flex items-center justify-center bg-muted">
+    <Card className="w-full h-full flex items-center justify-center border-none shadow-none">
       {imagePath ? (
         <div className="relative w-full h-full">
           <Image

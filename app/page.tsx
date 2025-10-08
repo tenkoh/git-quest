@@ -29,7 +29,7 @@ export default function Home() {
         {isCompleted ? (
           <CompletionScreen onReset={reset} />
         ) : (
-          <div className="w-[800px] h-[600px] flex gap-4">
+          <div className="w-[800px] h-[480px] flex gap-4">
             <div className="w-1/2 h-full">
               <GitImageDisplay imagePath={currentStepData.imagePath} />
             </div>
