@@ -25,15 +25,15 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-background">
       <GameHeader onReset={reset} />
 
-      <main className="flex-1 flex items-center justify-center p-8">
+      <main className="flex-1 flex items-start md:items-center justify-center p-4 md:p-8">
         {isCompleted ? (
           <CompletionScreen onReset={reset} />
         ) : (
-          <div className="w-[800px] h-[480px] flex gap-4">
-            <div className="w-1/2 h-full">
+          <div className="w-full max-w-[800px] flex flex-col md:flex-row gap-4 h-auto md:h-[480px]">
+            <div className="order-2 md:order-1 w-full md:w-1/2 h-64 md:h-full">
               <GitImageDisplay imagePath={currentStepData.imagePath} />
             </div>
-            <div className="w-1/2 h-full">
+            <div className="order-1 md:order-2 w-full md:w-1/2 md:h-full">
               <GamePanel
                 instructionTitle={currentStepData.instructionTitle}
                 instructionBody={currentStepData.instructionBody}

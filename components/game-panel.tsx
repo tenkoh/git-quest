@@ -54,7 +54,7 @@ export function GamePanel({
   }, [isCorrectAndWaiting, onNext]);
 
   return (
-    <Card className="w-full h-full p-6 flex flex-col gap-4">
+    <Card className="w-full md:h-full p-6 flex flex-col gap-4">
       <div className="flex-shrink-0">
         <div className="text-sm text-muted-foreground mb-2">
           ステップ {stepNumber} / {totalSteps}
