@@ -37,11 +37,17 @@ const scenarios: ScenarioStep[] = [
   },
   {
     id: 2,
-    instructionTitle: "作業ブランチを作成してください",
+    instructionTitle: "作業ブランチを作成し、ブランチを切り替えてください",
     instructionBody: "ブランチ名は feature とします。",
-    acceptedCommands: ["git checkout -b feature", "git switch -c feature"],
-    tip: "作業内容ごとにブランチを分けるのが一般的です。checkout -b または switch -c で新規作成と切り替えを同時に行えます。",
-    hint: "git checkout -b <ブランチ名> または git switch -c <ブランチ名> を使用します",
+    acceptedCommands: [
+      "git checkout -b feature",
+      "git switch -c feature",
+      "git branch feature && git checkout feature",
+      "git branch feature && git switch feature",
+    ],
+    tip: "作業内容ごとにブランチを分けるのが一般的です。checkout -b や switch -c で新規作成と切り替えを同時に行えますが、git branch で作成してから git checkout/git switch で切り替える方法もあります。",
+    hint:
+      "git checkout -b <ブランチ名> や git switch -c <ブランチ名>、または git branch <ブランチ名> && git checkout <ブランチ名> を使用します",
     imagePath: "/images/git-lecture-002.svg",
   },
   {
@@ -69,14 +75,17 @@ const scenarios: ScenarioStep[] = [
   },
   {
     id: 5,
-    instructionTitle: "新しい作業用ブランチを作成してください",
+    instructionTitle: "新しい作業用ブランチを作成し、ブランチを切り替えてください",
     instructionBody: "ブランチ名は feature/refactor とします。",
     acceptedCommands: [
       "git checkout -b feature/refactor",
       "git switch -c feature/refactor",
+      "git branch feature/refactor && git checkout feature/refactor",
+      "git branch feature/refactor && git switch feature/refactor",
     ],
-    tip: "作業をさらに細かく分けることで、変更を管理しやすくなります",
-    hint: "git checkout -b <ブランチ名> または git switch -c <ブランチ名> を使用します",
+    tip: "作業をさらに細かく分けることで、変更を管理しやすくなります。git checkout -b や git switch -c のほか、git branch で作成してから切り替える方法でも対応できます",
+    hint:
+      "git checkout -b <ブランチ名> や git switch -c <ブランチ名>、または git branch <ブランチ名> && git checkout <ブランチ名> を使用します",
     imagePath: "/images/git-lecture-005.svg",
   },
   {
@@ -99,7 +108,10 @@ const scenarios: ScenarioStep[] = [
     id: 7,
     instructionTitle: "変更をマージするために元のブランチに戻ってください",
     instructionBody: "feature ブランチに戻ります。",
-    acceptedCommands: ["git checkout feature", "git switch feature"],
+    acceptedCommands: [
+      "git checkout feature",
+      "git switch feature",
+    ],
     tip: "ブランチを切り替えることで、異なる作業内容に移動できます",
     hint: "git checkout <ブランチ名> または git switch <ブランチ名> を使用します",
     imagePath: "/images/git-lecture-007.svg",
@@ -145,9 +157,12 @@ const scenarios: ScenarioStep[] = [
     acceptedCommands: [
       "git checkout main && git pull",
       "git switch main && git pull",
+      "git checkout main && git pull origin main",
+      "git switch main && git pull origin main",
     ],
-    tip: "git pull はリモートの最新の変更を取得してローカルに反映します",
-    hint: "git checkout main または git switch main で main ブランチに切り替えた後、git pull を使用します",
+    tip: "git pull はリモートの最新の変更を取得してローカルに反映します。必要に応じてリモート名とブランチ名を指定することもできます",
+    hint:
+      "git checkout main または git switch main で main ブランチに切り替えた後、git pull (必要なら git pull origin main) を使用します",
     imagePath: "/images/git-lecture-011.svg",
   },
 ];
